@@ -2,6 +2,7 @@ package com.example.bpho.assignment2;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -34,6 +36,13 @@ public class AccDataActivity extends AppCompatActivity implements SensorEventLis
 
         TextView title = (TextView)findViewById(R.id.title);
         title.setText("Accelerometer Sensor Graph");
+        TextView legend1 = (TextView)findViewById(R.id.legend1);
+        TextView legend2 = (TextView)findViewById(R.id.legend2);
+        TextView legend3 = (TextView)findViewById(R.id.legend3);
+        legend1.setTextColor(Color.parseColor("#168222"));
+        legend2.setTextColor(Color.parseColor("#131784"));
+        legend3.setTextColor(Color.parseColor("#f29e29"));
+
 
         sm = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         s = sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -73,5 +82,10 @@ public class AccDataActivity extends AppCompatActivity implements SensorEventLis
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
         // Not used
+    }
+
+    public void goBack(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

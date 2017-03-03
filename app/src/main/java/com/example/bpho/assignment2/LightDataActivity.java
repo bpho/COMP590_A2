@@ -3,6 +3,7 @@ package com.example.bpho.assignment2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
 /**
@@ -22,4 +23,9 @@ public class LightDataActivity extends AppCompatActivity{
     }
 
     // TODO: Dynamically set axis labels and titles and values
+
+    public void goBack(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 }
