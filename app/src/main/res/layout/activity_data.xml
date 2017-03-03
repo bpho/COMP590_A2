@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20px"
+        android:layout_marginTop="20px"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/title"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.example.bpho.assignment2.VerticalTextView
+            android:layout_height="wrap_content"
+            android:layout_width="50px"
+            android:gravity="bottom"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:id="@+id/yAxisLabel"
+            android:text="Data" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_marginBottom="15dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:gravity="right"
+                android:id="@+id/secondY"
+                android:text="60"
+                android:layout_width="20dp" />
+
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:gravity="right"
+                android:id="@+id/thirdY"
+                android:text="50"/>
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:gravity="right"
+                android:id="@+id/fourthY"
+                android:text="40"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:gravity="right"
+                android:id="@+id/fifthY"
+                android:text="30"/>
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:gravity="right"
+                android:id="@+id/sixthY"
+                android:text="20"/>
+
+            <TextView
+                android:layout_marginTop="25dp"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:gravity="right"
+                android:id="@+id/seventhY"
+                android:text="10"/>
+
+            <TextView
+                android:layout_marginTop="25dp"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:gravity="right"
+                android:id="@+id/eighthY"
+                android:text="0"/>
+
+        </LinearLayout>
+
+
+        <com.example.bpho.assignment2.SensorPlotView
+            android:id="@+id/sensorPlotView"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_height="300dip"
+            android:layout_marginRight="50px"
+            android:background="#e8e8e8"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/firstX"
+            android:text="0"/>
+
+        <TextView
+            android:layout_marginLeft="12dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/secondX"
+            android:text="2"/>
+
+        <TextView
+            android:layout_marginLeft="17dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/thirdX"
+            android:text="4"/>
+
+        <TextView
+            android:layout_marginLeft="22dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/fourthX"
+            android:text="6"/>
+
+        <TextView
+            android:layout_marginLeft="28dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/fifthX"
+            android:text="8"/>
+
+        <TextView
+            android:layout_marginLeft="30dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/sixth"
+            android:text="10"/>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20px"
+        android:layout_marginTop="20px"
+        android:layout_marginLeft="25px"
+        android:layout_marginRight="25px"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/xAxisLabel"
+        android:text="Time (x100 msec)"/>
+
+</LinearLayout>
