@@ -19,6 +19,7 @@ public class SensorPlotView extends View {
     public ArrayList<Float> meanPoints = new ArrayList<>(6);
     public ArrayList<Float> valuePoints = new ArrayList<>(6);
     public ArrayList<Float> stdDevPoints = new ArrayList<>(6);
+    public boolean accPlot = false;
 
     public SensorPlotView(Context context) {
         super(context);
@@ -35,6 +36,7 @@ public class SensorPlotView extends View {
     public SensorPlotView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
+
 
     // Removes the first in the list, every value gets shift forward, oldest value becomes at index 1remove
     public void addMeanPoint(float mean) {
@@ -65,12 +67,81 @@ public class SensorPlotView extends View {
         super.onDraw(canvas);
         drawCanvasBorder(canvas, viewWidth, viewHeight);
         drawXYLines(canvas, viewWidth, viewHeight);
-        drawValuePoints(canvas, viewWidth, viewHeight);
-        drawMeanPoints(canvas, viewWidth, viewHeight);
-        drawStdDevPoints(canvas, viewWidth, viewHeight);
+
+        if (accPlot == true) {
+            drawValuePointsAcc(canvas, viewWidth, viewHeight);
+            drawMeanPointsAcc(canvas, viewWidth, viewHeight);
+            drawStdDevPointsAcc(canvas, viewWidth, viewHeight);
+        } else {
+            drawValuePointsLight(canvas, viewWidth, viewHeight);
+            drawMeanPointsLight(canvas, viewWidth, viewHeight);
+            drawStdDevPointsLight(canvas, viewWidth, viewHeight);
+        }
     }
 
-    public void drawValuePoints(Canvas canvas, int width, int height) {
+    public void drawMeanPointsLight(Canvas canvas, int width, int height) {
+        Paint p = new Paint();
+        Paint line = new Paint();
+        p.setStrokeWidth(20);
+        line.setStrokeWidth(5);
+        p.setColor(Color.parseColor("#131784"));
+        line.setColor(Color.parseColor("#131784"));
+
+        int incrementX = width/5;
+        int counterX = 0;
+
+        for (int i = 0; i < meanPoints.size(); i++) {
+            canvas.drawPoint(counterX, height - meanPoints.get(i), p);
+            if (i > 0) {
+                canvas.drawLine((counterX-incrementX), height-meanPoints.get(i-1), counterX, height-meanPoints.get(i), line);
+            }
+            counterX += incrementX;
+        }
+    }
+
+    public void drawValuePointsLight(Canvas canvas, int width, int height) {
+        Paint p = new Paint();
+        Paint line = new Paint();
+        p.setStrokeWidth(20);
+        line.setStrokeWidth(5);
+        p.setColor(Color.parseColor("#168222"));
+        line.setColor(Color.parseColor("#168222"));
+
+        int incrementX = width/5;
+        int counterX = 0;
+        // Height = 900
+
+        for (int i = 0; i < valuePoints.size(); i++) {
+            canvas.drawPoint(counterX, height - valuePoints.get(i), p);
+//            Log.v("Height: ", String.valueOf(height-valuePoints.get(i)));
+            if (i > 0) {
+                canvas.drawLine((counterX-incrementX), height-valuePoints.get(i-1), counterX, height-valuePoints.get(i), line);
+            }
+            counterX += incrementX;
+        }
+    }
+
+    public void drawStdDevPointsLight(Canvas canvas, int width, int height) {
+        Paint p = new Paint();
+        Paint line = new Paint();
+        p.setStrokeWidth(20);
+        line.setStrokeWidth(5);
+        p.setColor(Color.parseColor("#f29e29"));
+        line.setColor(Color.parseColor("#f29e29"));
+
+        int incrementX = width/5;
+        int counterX = 0;
+
+        for (int i = 0; i < stdDevPoints.size(); i++) {
+            canvas.drawPoint(counterX, height - stdDevPoints.get(i), p);
+            if (i > 0) {
+                canvas.drawLine((counterX-incrementX), height-stdDevPoints.get(i-1), counterX, height-stdDevPoints.get(i), line);
+            }
+            counterX += incrementX;
+        }
+    }
+
+    public void drawValuePointsAcc(Canvas canvas, int width, int height) {
         Paint p = new Paint();
         Paint line = new Paint();
         p.setStrokeWidth(20);
@@ -92,7 +163,7 @@ public class SensorPlotView extends View {
         }
     }
 
-    public void drawMeanPoints(Canvas canvas, int width, int height) {
+    public void drawMeanPointsAcc(Canvas canvas, int width, int height) {
         Paint p = new Paint();
         Paint line = new Paint();
         p.setStrokeWidth(20);
@@ -113,7 +184,7 @@ public class SensorPlotView extends View {
         }
     }
 
-    public void drawStdDevPoints(Canvas canvas, int width, int height) {
+    public void drawStdDevPointsAcc(Canvas canvas, int width, int height) {
         Paint p = new Paint();
         Paint line = new Paint();
         p.setStrokeWidth(20);
