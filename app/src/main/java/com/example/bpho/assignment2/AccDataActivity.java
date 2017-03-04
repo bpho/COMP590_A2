@@ -52,7 +52,7 @@ public class AccDataActivity extends AppCompatActivity implements SensorEventLis
         s = sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
         // Register event listener (every .1 seconds onSensorChanged called)
-        sm.registerListener(this, s, 200000);   // 200k Microseconds = 200ms = .2seconds
+        sm.registerListener(this, s, SensorManager.SENSOR_DELAY_NORMAL);   // 200k Microseconds = 200ms = .2seconds
     }
 
     @Override

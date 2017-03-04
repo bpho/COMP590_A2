@@ -72,11 +72,9 @@ public class LightDataActivity extends AppCompatActivity implements SensorEventL
         sm = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         s = sm.getDefaultSensor(Sensor.TYPE_LIGHT);
 
-        sm.registerListener(this, s, 200000);
+        sm.registerListener(this, s, SensorManager.SENSOR_DELAY_NORMAL);
 
     }
-
-    // TODO: Dynamically set axis labels and titles and values
 
     public void goBack(View view) {
         Intent intent = new Intent(this, MainActivity.class);

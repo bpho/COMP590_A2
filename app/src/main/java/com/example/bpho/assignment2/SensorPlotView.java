@@ -91,9 +91,9 @@ public class SensorPlotView extends View {
         int counterX = 0;
 
         for (int i = 0; i < meanPoints.size(); i++) {
-            canvas.drawPoint(counterX, height - meanPoints.get(i), p);
+            canvas.drawPoint(counterX, height - meanPoints.get(i)*3, p);
             if (i > 0) {
-                canvas.drawLine((counterX-incrementX), height-meanPoints.get(i-1), counterX, height-meanPoints.get(i), line);
+                canvas.drawLine((counterX-incrementX), height-meanPoints.get(i-1)*3, counterX, height-meanPoints.get(i)*3, line);
             }
             counterX += incrementX;
         }
@@ -109,13 +109,14 @@ public class SensorPlotView extends View {
 
         int incrementX = width/5;
         int counterX = 0;
-        // Height = 900
+        // Height = (ACTUAL) 900 (150 per interval), (REPRESENTED) Values up to 300 (50 per interval)
+        // 3:1 ratio
 
         for (int i = 0; i < valuePoints.size(); i++) {
-            canvas.drawPoint(counterX, height - valuePoints.get(i), p);
-//            Log.v("Height: ", String.valueOf(height-valuePoints.get(i)));
+            canvas.drawPoint(counterX, height - valuePoints.get(i)*3, p);
+//            Log.v("Height: ", String.valueOf(valuePoints.get(i)));
             if (i > 0) {
-                canvas.drawLine((counterX-incrementX), height-valuePoints.get(i-1), counterX, height-valuePoints.get(i), line);
+                canvas.drawLine((counterX-incrementX), height-valuePoints.get(i-1)*3, counterX, height-valuePoints.get(i)*3, line);
             }
             counterX += incrementX;
         }
@@ -133,9 +134,9 @@ public class SensorPlotView extends View {
         int counterX = 0;
 
         for (int i = 0; i < stdDevPoints.size(); i++) {
-            canvas.drawPoint(counterX, height - stdDevPoints.get(i), p);
+            canvas.drawPoint(counterX, height - stdDevPoints.get(i)*3, p);
             if (i > 0) {
-                canvas.drawLine((counterX-incrementX), height-stdDevPoints.get(i-1), counterX, height-stdDevPoints.get(i), line);
+                canvas.drawLine((counterX-incrementX), height-stdDevPoints.get(i-1)*3, counterX, height-stdDevPoints.get(i)*3, line);
             }
             counterX += incrementX;
         }
