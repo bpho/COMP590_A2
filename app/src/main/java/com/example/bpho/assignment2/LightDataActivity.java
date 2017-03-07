@@ -3,6 +3,7 @@ package com.example.bpho.assignment2;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -135,12 +136,18 @@ public class LightDataActivity extends AppCompatActivity implements SensorEventL
 
     public void checkAnimation(float average) {
         ImageView img = (ImageView)findViewById(R.id.animation);
-        if (average > 100 && average < 300) {
-            img.setBackgroundResource(R.drawable.light);
-        } else if (average > 300) {
-            img.setBackgroundResource(R.drawable.brightlight);
+        if (average > 50 && average < 155) {
+//            img.setBackgroundResource(R.drawable.light);
+            img.setBackgroundResource(R.drawable.lightlistmed);
+            ((AnimationDrawable)img.getBackground()).start();
+        } else if (average >= 155) {
+//            img.setBackgroundResource(R.drawable.brightlight);
+            img.setBackgroundResource(R.drawable.lightlisthigh);
+            ((AnimationDrawable)img.getBackground()).start();
         } else {
-            img.setBackgroundResource(R.drawable.darklight);
+//            img.setBackgroundResource(R.drawable.darklight);
+            img.setBackgroundResource(R.drawable.lightlistlow);
+            ((AnimationDrawable)img.getBackground()).start();
         }
     }
 

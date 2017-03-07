@@ -3,6 +3,7 @@ package com.example.bpho.assignment2;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -82,12 +83,19 @@ public class AccDataActivity extends AppCompatActivity implements SensorEventLis
 
     public void checkAnimation(float average) {
         ImageView img = (ImageView)findViewById(R.id.animation);
-        if (average > 13 && average < 18) {
-            img.setBackgroundResource(R.drawable.bunnywalk);
-        } else if (average > 18) {
-            img.setBackgroundResource(R.drawable.bunnyrun);
+        if (average > 11 && average < 15) {
+//            img.setBackgroundResource(R.drawable.bunnywalk);
+            img.setBackgroundResource(R.drawable.acclistnormal);
+            ((AnimationDrawable)img.getBackground()).start();
+        } else if (average >= 15) {
+//            img.setBackgroundResource(R.drawable.bunnyrun);
+            img.setBackgroundResource(R.drawable.acclistfast);
+            ((AnimationDrawable)img.getBackground()).start();
         } else {
-            img.setBackgroundResource(R.drawable.bunnysit);
+//            img.setBackgroundResource(R.drawable.bunnysit);
+            img.setBackgroundResource(R.drawable.acclistslow);
+            ((AnimationDrawable)img.getBackground()).start();
+
         }
     }
 
